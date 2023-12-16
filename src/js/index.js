@@ -1,3 +1,5 @@
+import {modeItems } from "./canvasMode.js";
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -8,4 +10,4 @@ window.addEventListener('resize', function() {
     canvas.height = window.innerHeight;
 })
 
-
+modeItems.render();
