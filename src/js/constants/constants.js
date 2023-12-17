@@ -2,8 +2,8 @@ export const modeListElem = document.querySelector('.modes__list');
 
 export const modes =  [
     {
-        name : "Silly Spring",
-        bgImage : "https://i.pinimg.com/564x/16/d3/71/16d371ddf4f4db8ca0e0c5ce5c9ff4ce.jpg"
+        name : "slinky",
+        bgImage : "https://media.istockphoto.com/id/1337221165/photo/colourful-slinky-spring-toy-on-a-black-background.jpg?s=612x612&w=0&k=20&c=5yEPL540aFUAciwGXUvdxV0aWxefFfrj_bpLdnGXhN4="
     },
     {
         name : "secondMode",
@@ -16,7 +16,7 @@ export const modes =  [
 ];
 
 export const settings = {
-    sillySpring : {
+    slinky : {
         radius : {
             name : 'Radius', 
             type : 'range',
