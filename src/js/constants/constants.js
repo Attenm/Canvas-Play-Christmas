@@ -1,4 +1,5 @@
 export const modeListElem = document.querySelector('.modes__list');
+export const settingsListItem = document.querySelector('.settings__list');
 
 export const modes =  [
     {

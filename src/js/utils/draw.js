@@ -2,10 +2,7 @@ import { mouse } from "../index.js";
 import { slinky } from "../modes/modes.js";
 import { mode } from "../modes/setmode.js";
 
-export function draw(event){
-    mouse.x = event.x;
-    mouse.y = event.y;
-
+export function draw(){
     switch(mode.getMode()) {
         case 'slinky': 
             slinky();
