@@ -1,4 +1,4 @@
-import { canvas, ctx, mouse } from "../index.js";
+import { canvas, ctx } from "../index.js";
 import {color} from "../utils/color.js";
 
 let particlesArray = [];
@@ -24,7 +24,7 @@ export class Particle {
 export function slinky() {
 
     function onMouseMove(event) {
-        particlesArray.push(new Particle(event.x, event.y, 10, 100));
+        particlesArray.push(new Particle(event.x, event.y, 20, 120));
         animate();
     }
 
@@ -34,7 +34,7 @@ export function slinky() {
             particle.draw();
             ctx.fillStyle = 'rgba(0,0,0,0.09)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            if( particlesArray.length> 50 ){
+            if( particlesArray.length> 20 ){
                 particlesArray.shift()
             }
         });

@@ -1,7 +1,6 @@
-import { modeList } from "./modeList.js";
-import { modeListElem } from "./constants/constants.js";
-import { mode } from "./modes/setmode.js";
+import { modesList } from "./modesList.js";
 import { draw } from "./utils/draw.js";
+import { settingsList } from "./utils/settings.js";
 
 export const canvas = document.getElementById('canvas');
 export const ctx = canvas.getContext('2d');
@@ -18,13 +17,7 @@ export const mouse = {
     y : null 
 }
 
-modeList.render();
+modesList.render();
+settingsList.render();
 draw();
 
-modeListElem.addEventListener('click', (e)=> {
-    if (e.target.matches('.mode__element')) {
-        let modeName = e.target.dataset.name;
-        alert(modeName)
-        mode.setMode(modeName);
-    }
-})
