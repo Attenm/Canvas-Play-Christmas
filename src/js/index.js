@@ -1,4 +1,6 @@
 import {modeItems } from "./canvasMode.js";
+import { modeListElem } from "./constants/constants.js";
+import { mode } from "./modes/setmode.js";
 import { draw } from "./utils/draw.js";
 
 const canvas = document.getElementById('canvas');
@@ -28,3 +30,10 @@ function delMoveHandler() {
     canvas.removeEventListener('mousemove', draw)
 }
 
+modeListElem.addEventListener('click', (e)=> {
+    if (e.target.matches('.mode__element')) {
+        let modeName = e.target.dataset.name;
+        alert(modeName)
+        mode.setMode(modeName);
+    }
+})
