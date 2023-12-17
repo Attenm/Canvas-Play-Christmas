@@ -1,4 +1,4 @@
-import {modeItems } from "./canvasMode.js";
+import { modeList } from "./modeList.js";
 import { modeListElem } from "./constants/constants.js";
 import { mode } from "./modes/setmode.js";
 import { draw } from "./utils/draw.js";
@@ -18,7 +18,7 @@ export const mouse = {
     y : null 
 }
 
-modeItems.render();
+modeList.render();
 draw();
 
 modeListElem.addEventListener('click', (e)=> {

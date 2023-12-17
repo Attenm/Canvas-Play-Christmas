@@ -1,6 +1,6 @@
 import { modes, modeListElem } from "./constants/constants.js";
 
-class ModeItems {
+class ModeList {
     render() {
         modes.map((mode)=>{
             let modeHtml = `<li class="mode__element" 
@@ -14,4 +14,4 @@ class ModeItems {
     }
 }
 
-export const modeItems = new ModeItems();
+export const modeList = new ModeList();
