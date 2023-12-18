@@ -16,7 +16,8 @@ export class Particle {
         ctx.beginPath();
         ctx.lineWidth = this.lineWidth;
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = this.color === 'random' ? color.random() : this.color;
+        this.color = this.color === 'random' ? color.random() : this.color;
+        ctx.strokeStyle = this.color;
         ctx.stroke();
     }
 }
