@@ -23,28 +23,31 @@ export class Particle {
 
 export function slinky() {
 
-    function onMouseMove(event) {
-        particlesArray.push(new Particle(event.x, event.y, 20, 120));
-        animate();
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particlesArray.forEach(particle => {
-            particle.draw();
-            ctx.fillStyle = 'rgba(0,0,0,0.09)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            if( particlesArray.length> 20 ){
-                particlesArray.shift()
-            }
-        });
-    }
-    
     canvas.addEventListener('mousedown', () => {
         canvas.addEventListener('mousemove', onMouseMove);
+        
+        const form = document.querySelector('.settings__form');
+        const dataForm = new FormData(form);
+        let radius = dataForm.get('radius');
+        let lineW = dataForm.get('line-width');
+        
+        function onMouseMove(event) {
+            particlesArray.push(new Particle(event.x, event.y, lineW, radius));
+            animate();
+        }
+        canvas.addEventListener('mouseup', () => {
+            canvas.removeEventListener('mousemove', onMouseMove);
+        })
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(particle => {
+                particle.draw();
+                ctx.fillStyle = 'rgba(0,0,0,0.09)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                if( particlesArray.length> 20 ){
+                    particlesArray.shift()
+                }
+            });
+        }
     });
-    
-    canvas.addEventListener('mouseup', () => {
-        canvas.removeEventListener('mousemove', onMouseMove);
-    })
 }
