@@ -7,7 +7,9 @@ class ModesList {
         let modeListHtml = `<ul class="modes__list"></ul>`;
 
         canvas.insertAdjacentHTML('afterend', modeListHtml);
+    }
 
+    fill() {
         this.modesListElem = document.querySelector('.modes__list')
 
         modes.map((mode)=>{

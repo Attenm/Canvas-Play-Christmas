@@ -18,6 +18,7 @@ export const mouse = {
 }
 
 modesList.render();
+modesList.fill();
 settingsList.render();
 settingsList.fill();
 draw();
