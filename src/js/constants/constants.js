@@ -15,21 +15,31 @@ export const modes =  [
 ];
 
 export const settings = {
-    slinky : {
-        radius : {
+    slinky : [
+        {
             name : 'Radius', 
             type : 'range',
+            class : 'range',
             defaultValue : 50,
+            min : 0,
+            max : 100,
+            step : 1
         },
-        lineWidth : {
+        {
             name : 'Line Width',
+            class : 'range',
             type : 'range',
             defaultValue : 2,
+            min : 0.2,
+            max : 30,
+            step : 0.2
         },
-        color : {
+        {
+            name : 'Color',
             type : 'select',
+            class : 'select',
             defaultValue : 'Random',
             options : ['Random']
         }
-    }
+    ]
 }
