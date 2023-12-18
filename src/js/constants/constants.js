@@ -17,7 +17,8 @@ export const modes =  [
 export const settings = {
     slinky : [
         {
-            name : 'Radius', 
+            name: 'radius',
+            title : 'Radius', 
             type : 'range',
             class : 'range',
             defaultValue : 50,
@@ -26,7 +27,8 @@ export const settings = {
             step : 1
         },
         {
-            name : 'Line Width',
+            name: 'line-width',
+            title : 'Line Width',
             class : 'range',
             type : 'range',
             defaultValue : 2,
@@ -35,7 +37,8 @@ export const settings = {
             step : 0.2
         },
         {
-            name : 'Color',
+            name: 'color',
+            title : 'Color',
             type : 'select',
             class : 'select',
             defaultValue : 'Random',

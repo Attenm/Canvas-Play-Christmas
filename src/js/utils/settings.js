@@ -3,14 +3,14 @@ import { mode } from "../modes/setmode.js";
 
 class SettingsList { 
     render() {
-        const settingsHtml = `<ul class="settings__list"></ul>`;
+        const settingsHtml = `<form action="" class="settings__form"></form>`;
         document.querySelector('.modes__list')
                 .insertAdjacentHTML('afterend', settingsHtml);
     }
     
     fill() {
         const modeType = mode.getMode();
-        const settingsElem = document.querySelector('.settings__list');
+        const settingsElem = document.querySelector('.settings__form');
         let currMode;
         for (currMode in settings){
             currMode = settings[modeType];
@@ -22,6 +22,8 @@ class SettingsList {
             if (input.type === 'range'){
                 html =  `<input type="${input.type}" 
                 class="${input.class}" 
+                name="${input.name}"
+                id="${input.name}" 
                 min="${input.min}" 
                 max="${input.max}" 
                 value="${input.defaultValue}"
@@ -33,9 +35,9 @@ class SettingsList {
                 input.options.forEach(option => {
                     options += `<option value="${option}">${option}</option>`
                 })
-                html = `<select class="${input.type}">${options}</select>`
+                html = `<select class="${input.type}" name="${input.name}" id="${input.name}">${options}</select>`
             }
-            listItemsHtml += `<li class="settings__item">${input.name}${html}<li/>`;
+            listItemsHtml += `<label class="label" for="${input.name}">${input.title}</label>${html}<br>`;
         });
         settingsElem.innerHTML = listItemsHtml;
     }

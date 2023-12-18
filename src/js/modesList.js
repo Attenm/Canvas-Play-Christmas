@@ -11,7 +11,7 @@ class ModesList {
         this.modesListElem = document.querySelector('.modes__list')
 
         modes.map((mode)=>{
-            let modeHtml = `<li class="mode__element" 
+            let modeHtml = `<li class="mode__item" 
                             data-name="${mode.name}" 
                             style="background-image : url('${mode.bgImage}')">
                                 ${mode.name}
