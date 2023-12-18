@@ -34,7 +34,6 @@ export function slinky() {
         let amount = dataForm.get('amount');
         let opacity = dataForm.get('opacity') / 100;
         let color = dataForm.get('color');
-        console.log(color);
         
         function onMouseMove(event) {
             particlesArray.push(new Particle(event.x, event.y, lineW, radius, color));

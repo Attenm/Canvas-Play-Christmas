@@ -42,7 +42,7 @@ export const settings = {
             type : 'select',
             class : 'select',
             defaultValue : 'Random',
-            options : ['random', 'red', 'green', 'white', 'lightcoral']
+            options : ['random', 'red', 'lawngreen', 'cyan', 'magenta']
         },
         {
             name : 'amount',
