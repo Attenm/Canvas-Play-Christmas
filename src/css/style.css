@@ -71,3 +71,7 @@ body {
     font-family: inherit;
     font-size: inherit;
 }
+
+option {
+    background-color: #000;
+}

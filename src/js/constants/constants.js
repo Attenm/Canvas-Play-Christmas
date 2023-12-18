@@ -23,7 +23,7 @@ export const settings = {
             class : 'range',
             defaultValue : 50,
             min : 0,
-            max : 100,
+            max : 250,
             step : 1
         },
         {
@@ -42,7 +42,27 @@ export const settings = {
             type : 'select',
             class : 'select',
             defaultValue : 'Random',
-            options : ['Random']
+            options : ['random', 'red', 'green', 'white', 'lightcoral']
+        },
+        {
+            name : 'amount',
+            title : 'Particle Number',
+            type : 'range',
+            class : 'range',
+            defaultValue : '50',
+            min : 1,
+            max : 200,
+            step : 1
+        },
+        {
+            name : 'opacity',
+            title : 'Opacity', 
+            type : 'range',
+            class : 'range',
+            defaultValue : '9',
+            min : 0,
+            max : 30,
+            step : 1
         }
     ]
 }
