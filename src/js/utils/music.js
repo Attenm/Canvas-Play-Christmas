@@ -2,9 +2,10 @@
 class Music {
     play() {
         window.onmousedown = function(){
-            let audio = new Audio('../src/audio/Frank Ocean - Pink & White (megapesni.fm).mp3');
+            let audio = new Audio('../../src/audio/FrankOcean-Pink&White.mp3');
             let initialVolume = 0.1;
             audio.volume = initialVolume;
+            console.log(audio)
 
             let volumeUp = setInterval(()=>{
                 audio.volume += 0.1;
