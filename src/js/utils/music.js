@@ -2,7 +2,8 @@
 class Music {
     play() {
         window.onmousedown = function(){
-            let audio = new Audio('../../src/audio/FrankOcean-Pink&White.mp3');
+            let audio = new Audio('audio/FrankOcean-Pink_White.mp3');
+            console.log(audio.nodeType);
             let initialVolume = 0.1;
             audio.volume = initialVolume;
             console.log(audio)
