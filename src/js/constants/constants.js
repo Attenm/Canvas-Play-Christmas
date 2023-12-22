@@ -22,7 +22,7 @@ export const settings = {
             type : 'range',
             class : 'range',
             defaultValue : 50,
-            min : 0,
+            min : 1,
             max : 250,
             step : 1
         },
@@ -33,7 +33,7 @@ export const settings = {
             type : 'range',
             defaultValue : 2,
             min : 0.2,
-            max : 30,
+            max : 50,
             step : 0.2
         },
         {
@@ -49,7 +49,7 @@ export const settings = {
             title : 'Particle Number',
             type : 'range',
             class : 'range',
-            defaultValue : '50',
+            defaultValue : 30,
             min : 1,
             max : 200,
             step : 1
