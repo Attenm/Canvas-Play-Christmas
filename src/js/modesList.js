@@ -1,12 +1,14 @@
 import { modes } from "./constants/constants.js";
 import { canvas } from "./index.js";
 import { mode } from "./modes/setmode.js";
+import { runMode } from "./utils/runMode.js";
 
 class ModesList {
     render() {
         let modeListHtml = `<ul class="modes__list"></ul>`;
 
         canvas.insertAdjacentHTML('afterend', modeListHtml);
+        return this;
     }
 
     fill() {
@@ -20,19 +22,20 @@ class ModesList {
                             </li>
                             `;
             this.modesListElem.insertAdjacentHTML('beforeend', modeHtml)
-        })
-
-        this.eventHandler();
+        });
+        return this;
     }
 
     eventHandler() {
-        this.modesListElem.addEventListener('click', (e)=> {
-            if (e.target.matches('.mode__element')) {
+        this.modesListElem.addEventListener('click', (e)=> {  
+            //set mode to run determined function
+            if (e.target.matches('.mode__item')) {
                 let modeName = e.target.dataset.name;
-                alert(modeName)
                 mode.setMode(modeName);
+                runMode();
             }
-        })
+        });
+        return this;
     }
 }
 

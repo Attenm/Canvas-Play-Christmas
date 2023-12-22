@@ -1,5 +1,6 @@
 import { canvas, ctx } from "../index.js";
 import {color} from "../utils/color.js";
+import { mode } from "./setmode.js";
 
 let particlesArray = [];
 
@@ -12,7 +13,7 @@ export class Particle {
         this.color = color;
     }
 
-    draw() {
+    runMode() {
         ctx.beginPath();
         ctx.lineWidth = this.lineWidth;
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
@@ -23,8 +24,10 @@ export class Particle {
 }
 
 export function slinky() {
-
+    
     canvas.addEventListener('mousedown', () => {
+
+        if (mode.getMode() !== 'slinky') return;
         canvas.addEventListener('mousemove', onMouseMove);
         
         const form = document.querySelector('.settings__form');
@@ -46,7 +49,7 @@ export function slinky() {
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particlesArray.forEach(particle => {
-                particle.draw();
+                particle.runMode();
                 ctx.fillStyle = `rgba(0,0,0,${opacity})`;
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
                 if( particlesArray.length> amount ){
@@ -56,3 +59,4 @@ export function slinky() {
         }
     });
 }
+

@@ -1,5 +1,5 @@
 import { modesList } from "./modesList.js";
-import { draw } from "./utils/draw.js";
+import { runMode } from "./utils/runMode.js";
 import { settingsList } from "./utils/settings.js";
 import { music } from "./utils/music.js"
 
@@ -18,10 +18,8 @@ export const mouse = {
     y : null 
 }
 
-modesList.render();
-modesList.fill();
-settingsList.render();
-settingsList.fill();
+modesList.render().fill().eventHandler();;
+settingsList.render().fill();
 music.play();
-draw();
+runMode();
 

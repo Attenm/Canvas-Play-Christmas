@@ -6,6 +6,7 @@ class SettingsList {
         const settingsHtml = `<form action="" class="settings__form"></form>`;
         document.querySelector('.modes__list')
                 .insertAdjacentHTML('afterend', settingsHtml);
+        return this;
     }
     
     fill() {
@@ -40,6 +41,7 @@ class SettingsList {
             listItemsHtml += `<label class="label" for="${input.name}">${input.title}</label>${html}<br>`;
         });
         settingsElem.innerHTML = listItemsHtml;
+        return this;
     }
 }
 

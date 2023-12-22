@@ -5,8 +5,8 @@ export const modes =  [
         bgImage : "https://media.istockphoto.com/id/1337221165/photo/colourful-slinky-spring-toy-on-a-black-background.jpg?s=612x612&w=0&k=20&c=5yEPL540aFUAciwGXUvdxV0aWxefFfrj_bpLdnGXhN4="
     },
     {
-        name : "secondMode",
-        bgImage : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmPnG0hZWB5-RFUOvvZqp9zcxy_UuyWamjuw&usqp=CAU"
+        name : "molecular",
+        bgImage : "https://png.pngtree.com/background/20230625/original/pngtree-illustrated-background-of-molecular-structure-in-3d-picture-image_4041157.jpg"
     },
     {
         name : "thirdMode",
