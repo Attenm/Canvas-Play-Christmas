@@ -1,34 +1,36 @@
-import { canvas, ctx } from "../index.js";
-import { mouse } from "../index.js";
-import { mode } from "./setmode.js";
 
-let hueCol = 0;
-class Particle {
-    constructor() {
-        this.x = mouse.x;
-        this.y = mouse.y;
-        this.speedX = Math.random() * 5 - 2.5;
-        this.speedY = Math.random() * 5 - 2.5;
-        this.color = 'hsl(' + hueCol + ', 100%, 50%)';
-        this.size = Math.random() * 10 - 5;
-    }
-
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        this.size -= 1;
-    }
-
-    draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, 5, 0, Math.PI * 2);
-        ctx.fill();
-    }
+const mouse = {
+    x: null,
+    y: null
 }
 
 export function molecular() {
-    if (mode.getMode() !== 'molecular') return;
+    const canvas = document.querySelector('#canvas');
+    const ctx = canvas.getContext('2d');
+
+    let hueCol = 0;
+
+    class Particle {
+        constructor() {
+            this.x = mouse.x;
+            this.y = mouse.y;
+            this.speedX = Math.random() * 3 - 1.5;
+            this.speedY = Math.random() * 3 - 1.5;
+            this.color = 'hsl(' + hueCol + ', 100%, 50%)';
+        }
+    
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+        }
+    
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, 15, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
 
     let particles = [];
 
@@ -41,6 +43,7 @@ export function molecular() {
     }
 
     canvas.addEventListener('mousedown', function () {
+
         canvas.addEventListener('mousemove', addParticles)
         
         canvas.addEventListener('mouseup', () => {
@@ -69,10 +72,8 @@ export function molecular() {
                 }
             }
 
-            if (particles.size < 0.1) {
-                particles.splice(i, 1);
-                i--;
-                console.log(particles)
+            if (particles.length > 200 ) {
+                particles.shift();
             }
         }
     }
@@ -82,7 +83,7 @@ export function molecular() {
         ctx.fillStyle = 'rgba(0, 0, 0)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         handleParticles();
-        hueCol += 2;
+        hueCol += 4;
         requestAnimationFrame(animate);
     }
     animate();

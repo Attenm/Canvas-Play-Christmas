@@ -1,13 +1,14 @@
-import { modes } from "./constants/constants.js";
-import { canvas } from "./index.js";
-import { mode } from "./modes/setmode.js";
-import { runMode } from "./utils/runMode.js";
+import { modes } from "../constants/constants.js";
+import { runMode } from "../utils/runMode.js";
+import { mode } from "../utils/setMode.js";
+import { canvas } from "./canvas.js";
 
 class ModesList {
     render() {
         let modeListHtml = `<ul class="modes__list"></ul>`;
 
-        canvas.insertAdjacentHTML('afterend', modeListHtml);
+        document.querySelector('.wrapper')
+                .insertAdjacentHTML('beforeend', modeListHtml);
         return this;
     }
 
@@ -32,6 +33,11 @@ class ModesList {
             if (e.target.matches('.mode__item')) {
                 let modeName = e.target.dataset.name;
                 mode.setMode(modeName);
+                canvas.remove();
+                canvas.render();
+                canvas.resize();
+                canvas.setContext();
+                canvas.handleResize();
                 runMode();
             }
         });

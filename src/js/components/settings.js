@@ -1,11 +1,11 @@
 import { settings } from "../constants/constants.js";
-import { mode } from "../modes/setmode.js";
+import { mode } from "../utils/setMode.js";
 
 class SettingsList { 
     render() {
         const settingsHtml = `<form action="" class="settings__form"></form>`;
-        document.querySelector('.modes__list')
-                .insertAdjacentHTML('afterend', settingsHtml);
+        document.querySelector('.wrapper')
+                .insertAdjacentHTML('beforeend', settingsHtml);
         return this;
     }
     
