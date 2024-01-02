@@ -1,8 +1,16 @@
 import {color} from "../utils/color.js";
 
 export function slinky() {
-    let particlesArray = [];
-    
+    let particlesArray;
+    let modesListElem = document.querySelector('.modes__list');
+    modesListElem.addEventListener('click', (e)=> {  
+        if (e.target.matches('.mode__item')) {
+            particlesArray = null;
+        }
+    })
+
+    particlesArray = [];
+
     const canvas = document.querySelector('#canvas');
     const ctx = canvas.getContext('2d');
     

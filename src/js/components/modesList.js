@@ -1,4 +1,4 @@
-import { modes } from "../constants/constants.js";
+import { modes, particlesArray } from "../constants/constants.js";
 import { runMode } from "../utils/runMode.js";
 import { mode } from "../utils/setMode.js";
 import { canvas } from "./canvas.js";

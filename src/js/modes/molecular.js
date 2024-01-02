@@ -5,6 +5,16 @@ const mouse = {
 }
 
 export function molecular() {
+    let particlesArray;
+    let modesListElem = document.querySelector('.modes__list');
+    modesListElem.addEventListener('click', (e)=> {  
+        if (e.target.matches('.mode__item')) {
+            particlesArray = null;
+        }
+    })
+
+    particlesArray = [];
+    
     const canvas = document.querySelector('#canvas');
     const ctx = canvas.getContext('2d');
 
@@ -32,13 +42,11 @@ export function molecular() {
         }
     }
 
-    let particles = [];
-
     function addParticles(e){
         mouse.x = e.x;
         mouse.y = e.y;
         for (let i = 0; i < 1; i++) {
-            particles.push(new Particle);
+            particlesArray.push(new Particle);
         }
     }
 
@@ -52,28 +60,27 @@ export function molecular() {
     })
 
     function handleParticles() {
-        for (var i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw();
+        for (var i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
 
-            for (var j = i + 1; j < particles.length; j++) {
-                const dx = particles[j].x - particles[i].x;
-                const dy = particles[j].y - particles[i].y;
+            for (var j = i + 1; j < particlesArray.length; j++) {
+                const dx = particlesArray[j].x - particlesArray[i].x;
+                const dy = particlesArray[j].y - particlesArray[i].y;
                 const distance = dx * dx + dy * dy;
 
                 //to add a stroke between each particle
                 if (distance < 10000) {
                     ctx.beginPath();
-                    ctx.strokeStyle = particles[i].color;
+                    ctx.strokeStyle = particlesArray[i].color;
                     ctx.lineWidth = 1;
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                    ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
                     ctx.stroke();
                 }
             }
-
-            if (particles.length > 200 ) {
-                particles.shift();
+            if (particlesArray.length > 200 ) {
+                particlesArray.shift();
             }
         }
     }

@@ -7,7 +7,7 @@ class Mode {
     }
 
     setMode(name) {
-        this.#mode  = name;
+        this.#mode = name;
     }
 }
 

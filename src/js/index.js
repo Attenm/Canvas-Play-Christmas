@@ -26,11 +26,4 @@ function initComponents(){
 renderPage();
 fillPage();
 initComponents();
-
-
-
-
-
-
-
 // music.play();

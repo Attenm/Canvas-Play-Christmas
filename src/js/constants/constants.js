@@ -1,3 +1,5 @@
+export let particlesArray = [];
+
 
 export const modes =  [
     {
@@ -9,7 +11,7 @@ export const modes =  [
         bgImage : "https://png.pngtree.com/background/20230625/original/pngtree-illustrated-background-of-molecular-structure-in-3d-picture-image_4041157.jpg"
     },
     {
-        name : "thirdMode",
+        name : "snow",
         bgImage : "https://i.vimeocdn.com/video/665321658-770ecc7e16eb218c49ac762ab10d6d3c7ad4b7a87bb00ae7713ac8b141192910-d_640x360.jpg"
     }
 ];
