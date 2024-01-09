@@ -1,6 +1,3 @@
-export let particlesArray = [];
-
-
 export const modes =  [
     {
         name : "slinky",
@@ -12,7 +9,7 @@ export const modes =  [
     },
     {
         name : "snow",
-        bgImage : "https://i.vimeocdn.com/video/665321658-770ecc7e16eb218c49ac762ab10d6d3c7ad4b7a87bb00ae7713ac8b141192910-d_640x360.jpg"
+        bgImage : "https://img.goodfon.ru/wallpaper/big/d/5b/zima-sneg-snezhinki-fon-goluboi-christmas-blue-winter-back-6.jpg"
     }
 ];
 

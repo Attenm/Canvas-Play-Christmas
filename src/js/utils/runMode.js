@@ -1,4 +1,3 @@
-
 import { slinky } from "../modes/slinky.js";
 import { mode } from "./setMode.js";
 import { molecular } from "../modes/molecular.js";
