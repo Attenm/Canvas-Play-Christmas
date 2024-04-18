@@ -51,20 +51,21 @@ export function slinky() {
         }
     }
 
+    function addParticle(event) {
+        const dataForm = new FormData(form);
+        let radius = +dataForm.get('radius');
+        let lineW = +dataForm.get('line-width');
+        let color = dataForm.get('color');
+        particlesArray.push(new Particle(event.x, event.y, lineW, radius, color));
+    }
     const form = document.querySelector('.settings__form');
+    canvas.addEventListener('click', addParticle);
     
     canvas.addEventListener('mousedown', () => {
-        canvas.addEventListener('mousemove', onMouseMove);
+        canvas.addEventListener('mousemove', addParticle);
         
-        function onMouseMove(event) {
-            const dataForm = new FormData(form);
-            let radius = +dataForm.get('radius');
-            let lineW = +dataForm.get('line-width');
-            let color = dataForm.get('color');
-            particlesArray.push(new Particle(event.x, event.y, lineW, radius, color));
-        }
         canvas.addEventListener('mouseup', () => {
-            canvas.removeEventListener('mousemove', onMouseMove);
+            canvas.removeEventListener('mousemove', addParticle);
         })
     });
     
