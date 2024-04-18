@@ -70,13 +70,15 @@ export function slinky() {
     });
     
     function handleParticles() {
-        particlesArray.forEach(particle => {
-            particle.draw();
-            particle.update();
-            if(particle.opacity > 0.98) {
-                particlesArray.shift();
-            }
-        });
+        if(particlesArray.length){
+            particlesArray.forEach(particle => {
+                particle.draw();
+                particle.update();
+                if(particle.opacity > 0.98) {
+                    particlesArray.shift();
+                }
+            });
+        }
     }
 
     function animate() {
