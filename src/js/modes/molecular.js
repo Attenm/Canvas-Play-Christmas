@@ -50,9 +50,11 @@ export function molecular() {
         }
     }
 
+    canvas.addEventListener('click', addParticles);
+
     canvas.addEventListener('mousedown', function () {
 
-        canvas.addEventListener('mousemove', addParticles)
+        canvas.addEventListener('mousemove', addParticles);
         
         canvas.addEventListener('mouseup', () => {
             canvas.removeEventListener('mousemove', addParticles)            
