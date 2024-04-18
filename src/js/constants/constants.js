@@ -43,25 +43,5 @@ export const settings = {
             defaultValue : 'Random',
             options : ['random', 'red', 'lawngreen', 'cyan', 'magenta']
         },
-        {
-            name : 'amount',
-            title : 'Particle Number',
-            type : 'range',
-            class : 'range',
-            defaultValue : 30,
-            min : 1,
-            max : 200,
-            step : 1
-        },
-        {
-            name : 'opacity',
-            title : 'Opacity', 
-            type : 'range',
-            class : 'range',
-            defaultValue : '9',
-            min : 0,
-            max : 30,
-            step : 1
-        }
     ]
 }

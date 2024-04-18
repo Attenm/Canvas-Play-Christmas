@@ -1,14 +1,10 @@
 
-class Color {
-    random() {
-        let color = `rgb(${this.randomVal()},${this.randomVal()},${this.randomVal()})`;
-        return color;
-    }
-
-    randomVal(){
+export default function randomColor() {
+    function randomVal(){
         let val = Math.floor((Math.random() * 251));
         return val;
     }
-}
 
-export const color = new Color();
+    let color = `rgb(${randomVal()},${randomVal()},${randomVal()})`;
+    return color;
+}

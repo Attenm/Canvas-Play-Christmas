@@ -1,4 +1,4 @@
-import {color} from "../utils/color.js";
+import randomColor from "../utils/color.js";
 
 export function slinky() {
     let particlesArray;
@@ -21,49 +21,68 @@ export function slinky() {
             this.lineWidth = lineWth;
             this.radius = radius;
             this.color = color;
+            this.opacity = 0;
         }
 
-        runMode() {
+        update() {
+            if(this.opacity < 1){
+                this.opacity = this.opacity + 0.02;
+            } else {
+                return;
+            }
+        }
+
+        applyOpacity(){
+            ctx.beginPath();
+            ctx.lineWidth = this.lineWidth+1;
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(0,0,0,${this.opacity})`;
+            ctx.stroke();
+        }
+
+        draw() {
             ctx.beginPath();
             ctx.lineWidth = this.lineWidth;
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            this.color = this.color === 'random' ? color.random() : this.color;
+            this.color = this.color === 'random' ? randomColor() : this.color;
             ctx.strokeStyle = this.color;
             ctx.stroke();
+            this.applyOpacity();
         }
     }
 
+    const form = document.querySelector('.settings__form');
+    
     canvas.addEventListener('mousedown', () => {
-        
-        const form = document.querySelector('.settings__form');
-        const dataForm = new FormData(form);
-        let radius = dataForm.get('radius');
-        let lineW = dataForm.get('line-width');
-        let amount = dataForm.get('amount');
-        let opacity = dataForm.get('opacity') / 100;
-        let color = dataForm.get('color');
-
         canvas.addEventListener('mousemove', onMouseMove);
         
         function onMouseMove(event) {
+            const dataForm = new FormData(form);
+            let radius = +dataForm.get('radius');
+            let lineW = +dataForm.get('line-width');
+            let color = dataForm.get('color');
             particlesArray.push(new Particle(event.x, event.y, lineW, radius, color));
-            animate();
         }
         canvas.addEventListener('mouseup', () => {
             canvas.removeEventListener('mousemove', onMouseMove);
         })
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particlesArray.forEach(particle => {
-                particle.runMode();
-                ctx.fillStyle = `rgba(0,0,0,${opacity})`;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                if( particlesArray.length> amount ){
-                    particlesArray.shift();
-                }
-            });
-        }
     });
+    
+    function handleParticles() {
+        particlesArray.forEach(particle => {
+            particle.draw();
+            particle.update();
+            if(particle.opacity > 0.98) {
+                particlesArray.shift();
+            }
+        });
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        handleParticles();
+        requestAnimationFrame(animate);
+    }
+    animate();
 }
 

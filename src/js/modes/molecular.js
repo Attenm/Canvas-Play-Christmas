@@ -87,8 +87,6 @@ export function molecular() {
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = 'rgba(0, 0, 0)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
         handleParticles();
         hueCol += 4;
         requestAnimationFrame(animate);
