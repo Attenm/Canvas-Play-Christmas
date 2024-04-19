@@ -43,5 +43,29 @@ export const settings = {
             defaultValue : 'Random',
             options : ['random', 'red', 'lawngreen', 'cyan', 'magenta']
         },
-    ]
+    ],
+    molecular : [
+        {
+            name: 'radius',
+            title : 'Radius', 
+            type : 'range',
+            class : 'range',
+            defaultValue : 50,
+            min : 1,
+            max : 250,
+            step : 1
+        },
+    ],
+    snow : [
+        {
+            name: 'radius',
+            title : 'Radius', 
+            type : 'range',
+            class : 'range',
+            defaultValue : 50,
+            min : 1,
+            max : 250,
+            step : 1
+        },
+    ],
 }

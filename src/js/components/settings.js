@@ -2,16 +2,20 @@ import { settings } from "../constants/constants.js";
 import { mode } from "../utils/setMode.js";
 
 class SettingsList { 
+    constructor(){
+        this.settingsElem = null;
+    }
+
     render() {
         const settingsHtml = `<form action="" class="settings__form"></form>`;
         document.querySelector('.wrapper')
                 .insertAdjacentHTML('beforeend', settingsHtml);
+        this.settingsElem = document.querySelector('.settings__form');
         return this;
     }
     
     fill() {
         const modeType = mode.getMode();
-        const settingsElem = document.querySelector('.settings__form');
         let currMode;
         for (currMode in settings){
             currMode = settings[modeType];
@@ -40,7 +44,7 @@ class SettingsList {
             }
             listItemsHtml += `<label class="label" for="${input.name}">${input.title}</label>${html}<br>`;
         });
-        settingsElem.innerHTML = listItemsHtml;
+        this.settingsElem.innerHTML = listItemsHtml;
         return this;
     }
 }

@@ -2,6 +2,7 @@ import { modes } from "../constants/constants.js";
 import { runMode } from "../utils/runMode.js";
 import { mode } from "../utils/setMode.js";
 import { canvas } from "./canvas.js";
+import { settingsList } from "./settings.js";
 
 class ModesList {
     render() {
@@ -39,6 +40,7 @@ class ModesList {
                 canvas.setContext();
                 canvas.handleResize();
                 runMode();
+                settingsList.fill();
             }
         });
         return this;
