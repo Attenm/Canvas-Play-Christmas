@@ -55,6 +55,36 @@ export const settings = {
             max : 250,
             step : 1
         },
+        {
+            name: 'line-width',
+            title : 'Line Width', 
+            type : 'range',
+            class : 'range',
+            defaultValue : 1,
+            min : 0,
+            max : 5,
+            step : 0.2,
+        },
+        {
+            name: 'speed',
+            title : 'Speed', 
+            type : 'range',
+            class : 'range',
+            defaultValue : 1,
+            min : 1,
+            max : 5,
+            step : 0.2,
+        },
+        {
+            name: 'max-length',
+            title : 'Max Length', 
+            type : 'range',
+            class : 'range',
+            defaultValue : 10,
+            min : 0,
+            max : 100,
+            step : 1,
+        },
     ],
     snow : [
         {
