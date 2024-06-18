@@ -21,11 +21,15 @@ export function molecular() {
     let hueCol = 0;
 
     class Particle {
-        constructor() {
+        constructor(radius, lineWidth, speed, maxLength) {
             this.x = mouse.x;
             this.y = mouse.y;
-            this.speedX = Math.random() * 3 - 1.5;
-            this.speedY = Math.random() * 3 - 1.5;
+            this.radius = radius;
+            this.lineWidth = lineWidth;
+            this.speed = speed;
+            this.maxLength = maxLength;
+            this.speedX = Math.random() * this.speed - this.speed / 2;
+            this.speedY = Math.random() * this.speed - this.speed / 2;
             this.color = 'hsl(' + hueCol + ', 100%, 50%)';
         }
     
@@ -37,16 +41,22 @@ export function molecular() {
         draw() {
             ctx.fillStyle = this.color;
             ctx.beginPath();
-            ctx.arc(this.x, this.y, 15, 0, Math.PI * 2);
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fill();
         }
     }
 
     function addParticles(e){
+        const formElem = document.querySelector('.settings__form');
+        const formData = new FormData(formElem);
+        const radius = formData.get('radius');
+        const lineWidth = formData.get('line-width');
+        const speed = formData.get('speed');
+        const maxLength = formData.get('max-length');
         mouse.x = e.x;
         mouse.y = e.y;
         for (let i = 0; i < 1; i++) {
-            particlesArray.push(new Particle);
+            particlesArray.push(new Particle(radius, lineWidth, speed, maxLength));
         }
     }
 
@@ -72,16 +82,16 @@ export function molecular() {
                 const distance = dx * dx + dy * dy;
 
                 //to add a stroke between each particle
-                if (distance < 10000) {
+                if (distance < ((particlesArray[i].maxLength + particlesArray[j].maxLength) / 2) * 10) {
                     ctx.beginPath();
                     ctx.strokeStyle = particlesArray[i].color;
-                    ctx.lineWidth = 1;
+                    ctx.lineWidth = particlesArray[i].lineWidth;
                     ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
                     ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
                     ctx.stroke();
                 }
             }
-            if (particlesArray.length > 200 ) {
+            if (particlesArray.length > 350 ) {
                 particlesArray.shift();
             }
         }
@@ -89,7 +99,9 @@ export function molecular() {
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        handleParticles();
+        if(particlesArray?.length){
+            handleParticles();
+        }
         hueCol += 4;
         requestAnimationFrame(animate);
     }
