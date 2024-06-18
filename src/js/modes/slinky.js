@@ -1,10 +1,7 @@
 import randomColor from "../utils/color.js";
-import {mode} from '../utils/setMode.js';
 
 export function slinky() {
-    if(mode.getMode() !== 'slinky'){
-        return null;
-    }
+
     let particlesArray;
     let modesListElem = document.querySelector('.modes__list');
     modesListElem.addEventListener('click', (e)=> {  
